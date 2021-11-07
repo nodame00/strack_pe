@@ -7,10 +7,10 @@ const routes: Routes = [
     //loadChildren: () => import('./add-sucursal/add-sucursal.module').then( m => m.AddSucursalPageModule)
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
-    path: 'add-sucursal',
+  /*{
+    path: '',
     loadChildren: () => import('./add-sucursal/add-sucursal.module').then( m => m.AddSucursalPageModule)
-  }
+  }*/
 ];
 
 @NgModule({

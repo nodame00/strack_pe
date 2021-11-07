@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-//import { ApiService } from '../services/api.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
+
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-tab1',
@@ -44,17 +47,43 @@ export class Tab1Page {
     ]
   };
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private api: ApiService, private geolocation: Geolocation) {}
 
     formAddS = this.formBuilder.group({
        name:['', [Validators.required, Validators.maxLength(100)]],
        address:['', [Validators.required, Validators.maxLength(200)]],
        city:['', [Validators.required, Validators.maxLength(50)]],
-       state:['', [Validators.required]]
+       state:['', [Validators.required]],
+       latitude:[''],
+       longitude:['']
     });
   
     addSucursal(){
-      //this.api.list().subscribe(r=>{console.log(r)})
-      console.log(this.formAddS.value);
+      this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp) => {
+        console.log(resp)
+        //this.formAddS.setValue({latitude:resp.coords.latitude,longitude:resp.coords.longitude})
+        this.formAddS.patchValue({latitude:resp.coords.latitude,longitude:resp.coords.longitude});
+        console.log(this.formAddS.value);
+        this.api.agregar(this.formAddS.value).subscribe(r=>{
+          this.formAddS.reset();
+          console.log(r)
+        
+        })
+        
+      
+
+
+
+
+        }).catch((error) => {
+
+
+            alert("Error getting location");
+
+            console.log('Error getting location', error);
+
+        });
+      
+      //console.log(this.formAddS.value);
     }
 }

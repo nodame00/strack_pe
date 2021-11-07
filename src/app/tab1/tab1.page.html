@@ -11,6 +11,9 @@
 			<ion-item >
 			  <ion-label position="floating">Nombre</ion-label>
 			  <ion-input formControlName="name" clearInput type="text"></ion-input>
+        <ion-input formControlName="latitude" clearInput type="text"></ion-input>
+			  <ion-input formControlName="longitude" clearInput type="text"></ion-input>
+
 			</ion-item>
       <div *ngFor="let error of errorMessages.name">
         <ng-container * ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
