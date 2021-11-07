@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { Component,  } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+//import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-add-sucursal',
   templateUrl: './add-sucursal.page.html',
   styleUrls: ['./add-sucursal.page.scss'],
 })
-export class AddSucursalPage {
+export class AddSucursalPage{
 
-  /*
-  implements OnInit 
-  ngOnInit() {
+  /*ngOnInit() {
   }*/
 
   get name(){
@@ -48,7 +47,7 @@ export class AddSucursalPage {
   };
 
   
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,) {}
 
   formAddS = this.formBuilder.group({
       name:['', [Validators.required, Validators.maxLength(100)]],
@@ -58,6 +57,7 @@ export class AddSucursalPage {
   });
 
  addSucursal(){
+   
    console.log(this.formAddS.value);
  }
 

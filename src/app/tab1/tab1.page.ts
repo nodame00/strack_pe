@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+//import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-tab1',
@@ -53,6 +54,7 @@ export class Tab1Page {
     });
   
     addSucursal(){
+      //this.api.list().subscribe(r=>{console.log(r)})
       console.log(this.formAddS.value);
     }
 }
