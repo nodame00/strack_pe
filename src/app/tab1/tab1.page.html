@@ -1,5 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-title>Agregar Sucursal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+	<ion-list>
+		<form class="formF" [formGroup]="formAddS" (submit)="addSucursal()">
+
+			<ion-item >
+			  <ion-label position="floating">Nombre</ion-label>
+			  <ion-input formControlName="name" clearInput type="text"></ion-input>
+			</ion-item>
+      <div *ngFor="let error of errorMessages.name">
+        <ng-container * ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+			<ion-item>
+			  <ion-label position="floating">Dirección</ion-label>
+			  <ion-input formControlName="address" clearInput type="address-line1"></ion-input>
+			</ion-item>
+      <div *ngFor="let error of errorMessages.name">
+        <ng-container * ngIf="address.hasError(error.type) && (address.dirty || address.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+      <ion-item>
+			  <ion-label position="floating">Ciudad</ion-label>
+			  <ion-input formControlName="city" clearInput type="country"></ion-input>
+			</ion-item>
+      <div *ngFor="let error of errorMessages.country">
+        <ng-container * ngIf="country.hasError(error.type) && (country.dirty || country.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label>Estado</ion-label>
+        <ion-select formControlName="state" >
+          <ion-select-option value="puebla">Puebla</ion-select-option>
+          <ion-select-option value="cdmx">Cd. de México</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.state">
+        <ng-container * ngIf="state.hasError(error.type) && (state.dirty || state.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+			<ion-row class="btnF">
+        <ion-col size="4" offset="4">
+          <ion-button [disabled]="!formAddS.valid" type="submit" color="primary" expand="block">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+	</ion-list>
+
+</ion-content>
+
+
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>
      Prueba
     </ion-title>
@@ -14,6 +79,6 @@
   </ion-header>
 
   <app-explore-container name="Tab 12 page"></app-explore-container>
-</ion-content>
+</ion-content>-->
 
 

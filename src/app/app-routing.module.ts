@@ -11,6 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./add-sucursal/add-sucursal.module').then( m => m.AddSucursalPageModule)
   }
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
